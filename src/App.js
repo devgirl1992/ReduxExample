@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Posts from "./Components/posts";
+import Postform from "./Components/postform";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const store = createStore(() => [], {}, applyMiddleware());
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <h1 className="title">learn Redux</h1>
+
+          <h1 className="title">Postform Component</h1>
+          <Postform />
+          <hr />
+
+          <h1 className="title">Post Component</h1>
+          <Posts />
+          <br />
+        </div>
+      </Provider>
+    );
+  }
 }
 
 export default App;

@@ -3,9 +3,7 @@ import "./App.css";
 import Posts from "./Components/posts";
 import Postform from "./Components/postform";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-
-const store = createStore(() => [], {}, applyMiddleware());
+import store from "./store";
 
 class App extends Component {
   render() {
@@ -28,3 +26,6 @@ class App extends Component {
 }
 
 export default App;
+
+//provider: is a React component and Glue for React and Redux
+//Provider taks Store,Store holds the State

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { createPost } from "../actions/postActions";
 
-export default class postform extends Component {
+class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,26 +24,21 @@ export default class postform extends Component {
     const post = {
       title: this.state.title,
       body: this.state.body
-    }
-    const url = "https://jsonplaceholder.typicode.com/posts";
-    fetch(url, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(post) 
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-  }
+    };
+    //call Action
+    this.props.createPost(post);
+  };
   render() {
     return (
       <div>
         <h1>Add Post </h1>
         <form onSubmit={this.onSubmit}>
           <div>
-            <lable>Title:</lable>
+            <lable>
+              <b>
+                <i>Title:</i>
+              </b>
+            </lable>
             <br />
             <input
               type="text"
@@ -50,7 +48,11 @@ export default class postform extends Component {
             />
           </div>
           <div>
-            <lable>Body:</lable>
+            <lable>
+              <b>
+                <i>Body:</i>
+              </b>
+            </lable>
             <br />
             <textarea
               name="body"
@@ -59,9 +61,22 @@ export default class postform extends Component {
             />
           </div>
           <br />
-          <button type="submit">Submit</button>
+          <button type="submit">
+            <b>
+              <i>Submit</i>
+            </b>
+          </button>
         </form>
       </div>
     );
   }
 }
+
+PostForm.propTypes = {
+  createPost: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { createPost }
+)(PostForm);

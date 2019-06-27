@@ -1,11 +1,12 @@
 .App {
-  with: 90%;
+  width: 85%;
   margin: auto;
-  background-color: #85ffef;
+  background-color: #F8E7F7;
+  border: dashed 3px #7CDAC9;
 }
 
 .title {
-  background-color: #fffd8a;
+  background-color: #FFFDC7;
   text-align: center;
-  color: #85ffef;
+  color: #7CDAC9;
 }
